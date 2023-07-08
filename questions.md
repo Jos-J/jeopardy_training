@@ -22,7 +22,7 @@ designed for creating network-centric applications
 complementary to and integrated with HTML
 All the Above
 
-What ae the advantages of using JavaScript
+What are the advantages of using JavaScript
 Increased interactivity
 Richer interfaces
 A & B
@@ -60,7 +60,7 @@ length;
 length:
 
 What are the variable naming conventions in JavaScript?
-you should not use an yof the JavaScript reserved keywords ad variable names
+you should not use any of the JavaScript reserved keywords ad variable names
 should not start with a numeral
 varaible names are case sensitive
 All the above
