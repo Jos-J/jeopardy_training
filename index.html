@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./assets/style.css">
+  <title>Jeopardy Training</title>
+</head>
+
+<body>
+  <!-- Start Button -->
+  <id class="start_button"><button> Start Quiz </button></id>
+
+  <!-- Questions  Box -->
+  <div class="questions_box">
+    <header>
+      <div class="title"> Jeopardy Training </div>
+        <div class="timer">
+        <div class="time_text"> Time left</div>
+        <div class="timer_mins">10:00</div>
+      </div>
+    </header>
+    <section>
+      <!-- i dont know what other element to use besides the span, i tried ol, il, li but i dont want a list, i just want options. -->
+      <div class="question_text">
+        <span> what is JavaScript used for ? </span>
+      </div>
+      <div class="option_list">
+        <div class="option">
+          <span>Interconnectivity</span>
+        </div>
+        <div class="option">
+          <span> Markup Language </span>
+        </div>
+        <div class="option">
+          <span> Styling the markup language </span>
+        </div>
+        <div class="option">
+          <span> All the above </span>
+        </div>
+    </section>
+
+    <!-- Quesstions box footer -->
+    <footer>
+       <div class="total_questions">
+        <span><p>1</p>of<p>10</p> questions</span>
+       </div>
+       <button class="next_button"> Next Question </button>
+    </footer>
+  </div>
+<!-- score box -->
+<div class="score_box">
+  <div class="complete_text"> Quiz completed. </div>
+  <div class="score_text">
+    <span> You scored <p> 5 </p> out of <p> 10 </p> </span>
+  </div>
+  <div class="buttons">
+    <button class="mulligan">Mulligan</button>
+    <button class="quit"> Quit</button>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
