@@ -5,17 +5,18 @@ const options_list = document.querySelector("options_list");
 
 // Start button clicked
 start_button.onclick =()=>{
-    questions("questions_box")
+    showQuestions(".questions_box")
+    console.log(showQuestions)
     // question_text("question_text")
     showQuestions();
 }
 let que_count = 0;
 
 function showQuestions(){
-    const question_text = document.querySelector("question_text");
-    let question_tag ="<span>" + questions[0].Number + "<span>";
+    const question_text = document.querySelector(".question_text");
+    let question_tag ="<span>" + questions[1].Number + "<span>";
     // question_text.innerHTML = question_tag;
-}
+
 
 // creating an array and passing the number, questions, options and answers
 let questions = [
@@ -197,4 +198,5 @@ let questions = [
             "None of the Above"
         ]
     }
-];
+]
+}
