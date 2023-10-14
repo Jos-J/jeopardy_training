@@ -1,5 +1,5 @@
-const  start_button = document.querySelector(".start_button button");
-const question_text = document.querySelector(".question_text");
+const  start_button = document.querySelector("start_button button");
+const question_text = document.querySelector("question_text");
 const options_list = document.querySelector("options_list");
 
 
