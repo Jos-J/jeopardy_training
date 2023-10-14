@@ -1,13 +1,13 @@
 const  start_button = document.querySelector(".start_button button");
 const question_text = document.querySelector(".question_text");
 const options_list = document.querySelector(".options_list");
-<script src="./assets/Scripts/questions.js"></script>
+const question_box = document.querySelector(".questions_box")
 
 // Start button clicked
 start_button.onclick =()=>{
-    showQuestions(".quizQuestions")
+    showQuestions(".questions_box")
     console.log(showQuestions)
-    // question_text("question_text")
+    question_text(".question_text")
     showQuestions();
 }
 let que_count = 0;
@@ -198,7 +198,7 @@ let questions = [
 ]
 
 function showQuestions(){
-    const question_text = document.querySelector("questions");
+    const question_box = document.querySelector(".question_box");
     let question_tag ="<span>" + questions[1].Number + "<span>";
-    question_text.innerHTML = question_tag;
+    question_box.innerHTML = question_box;
 }

@@ -16,12 +16,12 @@ body{
    left: 50%; 
    transform: translate(-50%, -50%);
 }
-/* .questions_box.active {
+.questions_box.active {
     z-index: 5;
-    opacity: 1;
+    /* opacity: 1; */
     pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1); */
-
+    transform: translate(-50%, -50%) scale(1);
+}
 /* start button styling */
 .start_button button {
     font-size: 16px;
@@ -173,7 +173,7 @@ footer .next_button:hover {
     text-align: center;
     flex-direction: column;
     justify-content: space-between;
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
     transform: translate(-50%, -50%) scale(1.5);
 }
