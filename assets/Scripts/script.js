@@ -13,7 +13,7 @@ start_button.onclick =()=>{
 let que_count = 0;
 
 function showQuestions(){
-    const question_text = document.querySelector(".question_text");
+    const question_text = document.querySelector("question_text");
     let question_tag ="<span>" + questions[1].Number + "<span>";
     // question_text.innerHTML = question_tag;
 
