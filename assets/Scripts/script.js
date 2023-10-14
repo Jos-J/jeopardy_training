@@ -1,21 +1,18 @@
-const  start_button = document.querySelector("start_button button");
-const question_text = document.querySelector("question_text");
-const options_list = document.querySelector("options_list");
-
+const  start_button = document.querySelector(".start_button button");
+const question_text = document.querySelector(".question_text");
+const options_list = document.querySelector(".options_list");
+<script src="./assets/Scripts/questions.js"></script>
 
 // Start button clicked
 start_button.onclick =()=>{
-    showQuestions(".questions_box")
+    showQuestions(".quizQuestions")
     console.log(showQuestions)
     // question_text("question_text")
     showQuestions();
 }
 let que_count = 0;
 
-function showQuestions(){
-    const question_text = document.querySelector("question_text");
-    let question_tag ="<span>" + questions[1].Number + "<span>";
-    // question_text.innerHTML = question_tag;
+
 
 
 // creating an array and passing the number, questions, options and answers
@@ -199,4 +196,9 @@ let questions = [
         ]
     }
 ]
+
+function showQuestions(){
+    const question_text = document.querySelector("questions");
+    let question_tag ="<span>" + questions[1].Number + "<span>";
+    question_text.innerHTML = question_tag;
 }
