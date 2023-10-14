@@ -6,7 +6,7 @@ const question_box = document.querySelector(".questions_box")
 // Start button clicked
 start_button.onclick =()=>{
     showQuestions(".questions_box")
-    console.log(showQuestions)
+    // console.log(showQuestions)
     question_text(".question_text")
     showQuestions();
 }
@@ -199,6 +199,12 @@ let questions = [
 
 function showQuestions(){
     const question_box = document.querySelector(".question_box");
-    let question_tag ="<span>" + questions[1].Number + "<span>";
-    question_box.innerHTML = question_box;
+    let showQuestions ="<span>" + questions[1].Number + "<span>";
+    showQuestions.innerHTML = question_box;
 }
+
+// function question_text(){
+//     const question_text = document.querySelector(".question_box");
+//     let showQuestions ="<span>" + questions[1].Number + "<span>";
+//     question_text.innerHTML = question_text;
+// }
