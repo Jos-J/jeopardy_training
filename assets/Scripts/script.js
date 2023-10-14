@@ -17,14 +17,12 @@ start_button.onclick =()=>{
 // creating an array and passing the number, questions, options and answers
 let questions = [
     {
-        Number: 1,
-        question: "what is JavaScript used for ?",
-        answer: "Interconnectivity",
-        options: [
-            "All the above",
-            "Interconnectivity",
-            "Markup Language",
-            "Styling the markup language",
+        question: "",
+        answer: [
+            {text: '', correct: true},
+            {text: '', correct: false},
+            {text: '', correct: false},
+            {text: '', correct: false},
         ]
     },
     {
