@@ -1,13 +1,56 @@
-var correct = document.querySelector(".correct");
-var incorrect = document.querySelector(".incorrect");
-var timerElement = document.querySelector(".timer-count");
-var startButton = document.querySelector(".start-btn");
-
+var correct = document.querySelector('.correct');
+var incorrect = document.querySelector('.incorrect');
+var timerElement = document.querySelector('.timer-count');
+var startButton = document.getElementById('start-btn');
+var wordBlank = document.querySelector('questions')
 var correctCounter = 0;
 var incorrectCounter = 0;
-var isWin = false;
+var isQuizFinished = false;
 var timer;
 var timerCount;
+var currentQuestionIndex = 0;
+
+var score;
+
+startButton.addEventListener('click', startQuiz);
+
+function startQuiz(){
+console.log('Quiz Started')
+}
+
+function setNextQuestion(){
+
+}
+
+
+function selectAnswer(){
+
+}
+
+// The init function is called when the page loads 
+function init() {
+  getCorrect();
+  getIncorrect();
+}
+
+// The startGame function is called when the start button is clicked
+function startGame() {
+  isQuizFinished = false;
+  timerCount = 600;
+  // Prevents start button from being clicked when round is in progress
+  startButton.disabled = true;
+  renderBlanks()
+  startTimer()
+}
+
+function quizOver() {
+  questions.textContent = "YOU WON!!!🏆 ";
+  correctCounter++
+  startButton.disabled = false;
+  setWins()
+}
+
+
 
 
 
@@ -90,9 +133,9 @@ let questions = [
     }
 ]
 
-function showQuestions(){
-    const question_box = document.querySelector(".question_box");
-    let showQuestions ="<span>" + questions[1].Number + "<span>";
-    showQuestions.innerHTML = question_box;
-}
+// function showQuestions(){
+//     const question_box = document.querySelector(".question_box");
+//     let showQuestions ="<span>" + questions[1].Number + "<span>";
+//     showQuestions.innerHTML = question_box;
+// }
 
