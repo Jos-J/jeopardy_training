@@ -1,16 +1,13 @@
-const  start_button = document.querySelector(".start_button button");
-const question_text = document.querySelector(".question_text");
-const options_list = document.querySelector(".options_list");
-const question_box = document.querySelector(".questions_box")
+var correct = document.querySelector(".correct");
+var incorrect = document.querySelector(".incorrect");
+var timerElement = document.querySelector(".timer-count");
+var startButton = document.querySelector(".start-btn");
 
-
-
-// Start button clicked
-start_button.onclick =()=>{
-    showQuestions(".questions")
-    // console.log(showQuestions)
-    showQuestions()
-}
+var correctCounter = 0;
+var incorrectCounter = 0;
+var isWin = false;
+var timer;
+var timerCount;
 
 
 
@@ -80,108 +77,7 @@ let questions = [
             "All the above",
         ]
     },
-    {
-        Number: 7,
-        question: "What are the advantages of using JavaScript?",
-        answer: "A & B",
-        options: [
-            "Increased interactivity",
-            "Richer interfaces",
-            "A & B",
-            "None the above",
-        ]
-    },
-    {
-        Number: 8,
-        question: "How do you create an Array in JavaScript?",
-        answer: "Var x = []; var y= [1, 2, 3, 4, 5];",
-        options: [
-            "Var x = [] var y= [1, 2, 3, 4, 5];",
-            "Var x = []; var y= [1, 2, 3, 4, 5];",
-            "Var x = []: var y= [1, 2, 3, 4, 5]:",
-            "Var x = []: var y= [1, 2, 3, 4, 5];",
-        ]
-    },
-    {
-        Number: 9,
-        question: "How many types of functions does javaScript Support?",
-        answer: "named and annonomous;",
-        options: [
-            "named",
-            "named and annonomous",
-            "named, annonomous, secert",
-            "All the aboved",
-        ]
-    },
-    {
-        Number: 10,
-        question: "what's a call back in JavaScript?",
-        answer: "execute code in response to an event",
-        options: [
-            "lyrics in a song",
-            "execute code in response to an event",
-            "way to undo code previously typed",
-            "All the aboved",
-        ]
-    },
-    {
-        Number: 11,
-        question: "what are the valid scopes of a varaible in JavaScript?",
-        answer: "A & B",
-        options: [
-            "Global",
-            "Local",
-            "International",
-            "All the aboved",
-            "A & B"
-        ]
-    },
-    {
-        Number: 12,
-        question: "Which built-in method returns the length of the string?",
-        answer: "length()",
-        options: [
-            "length()",
-            "length[]",
-            "length;",
-            "length:",
-        ]
-    },
-    {
-        Number: 13,
-        question: "What are the variable naming conventions in JavaScript?",
-        answer: "All the above",
-        options: [
-            "you should not use any of the JavaScript reserved keywords ad variable names",
-            "should not start with a numeral",
-            "varaible names are case sensitive",
-            "All the above",
-        ]
-    },
-    {
-        Number: 14,
-        question: "What typeof returns for a null value?",
-        answer: "All the above",
-        options: [
-            "Error",
-            "Undefined",
-            "Object",
-            "None of the above",
-        ]
-    },
-    {
-        Number: 15,
-        question: "What are the Type of operators in Javascript",
-        answer: "All the above",
-        options: [
-            "Number",
-            "String",
-            "Boolean",
-            "None of the above",
-            "All the above"
-        ]
-    },
-    { Number: 16,
+    { Number: 7,
         question: "Rate my quiz",
         answer: "A worthy",
         options: [
