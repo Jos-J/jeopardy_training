@@ -2,7 +2,7 @@ const startButton = document.getElementById('start_btn')
 const nextButton = document.getElementById('next_btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answers-buttons')
+const answerButtonElement = document.getElementById('answers-buttons')
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -28,7 +28,7 @@ function setNextQuestion(){
 
 function showQuestion(question) {
 questionElement.innerText = question.question
-question.answers.forEach(answer => {
+question.answer.forEach(answer => {
 const button = document.createElement('button')
 button.innerText = answer.text
 button.classList.add('btn')
@@ -36,7 +36,8 @@ if (answer.correct){
     button.dataset.correct = answer.correct
 }
 button.addEventListener('click', selectAnswer)
-answerButtonsElement.appendChild(button)
+answerButtonElement.appendChild(button)
+console.log("appendChild")
 
 })  
 }
@@ -117,9 +118,7 @@ const questions = [
             {text:'none of the above', correct: false},
             {text:'all the above', correct: false},
             {text:'true', correct: false}
-        ]
-       
-        
+        ] 
     },
     {
         question: "Is JavaScript case-sensitive?",

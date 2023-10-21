@@ -1,35 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>CSS Box Styling</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class= "large-font">Jeopardy training </div>
+      <!-- <button class="start-button">Start</button> -->
+    </header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/CSS/style1.css">
-  
-  <title>Jeopardy Training</title>
-</head>
-<body>
-<div class="container">
-  <div id="question-container" class="hide">
-    <div id="question"> Question</div>
-    <div id="answer-buttons" class="btn-grid">
-      <button class="btn"> Answer 1 </button>
-      <button class="btn"> Answer 2 </button>
-      <button class="btn"> Answer 3 </button>
-      <button class="btn"> Answer 4 </button>
-    </div>
-  </div>
-  <div class="controls">
-    <button id="start_btn" class="start-btn btn"> Start</button>
-    <button id="next_btn" class="next_btn btn hide"> Next</button>
-  </div>
+    <main>
+      <section>
+        <div class="card word-guess">
+            <!-- <div class="questions">what is JavaScript used for <div> -->
+            <div id=" answer-buttons" class="btn-grid">
+              <button class="btn"> Answer 1 </button>
+              <button class="btn"> Answer 2 </button>
+              <button class="btn"> Answer 3 </button>
+              <button class="btn"> Answer 4 </button>
+            </div>
+        </div>
+        <div class="controls">
+          <button id="start-btn" class="start-btn btn"> Start</button>
+          <button id="next-btn" class="next-btn btn"> Next </button>
+        </div>
+      </section>
 
-  <script src="./assets/Scripts/script1.js"></script>
-<!-- <script src="./assets/Scripts/testscript.js"></script> -->
-
-
-
+      <section>
+        <div class="card results">
+          <div class = "correct-incorrect-container">
+          <div>
+          <h2> Correct : <span class="win">0 </span> </h2>
+          <h2> Incorrect: <span class="lose">0</span></h2>
+        </div>
+          <button class="reset-button"> Mulligan </button>
+      </div>
+          <div class= "card timer">
+            <div class = "timer-text">
+            <div class="large-font timer-count">5:00</div>
+            <h3> Time remaining</h3>
+          </div>
+        
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/script.js"></script>
   </body>
- 
-
-</html> 
+</html>
