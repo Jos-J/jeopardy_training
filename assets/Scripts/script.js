@@ -1,25 +1,43 @@
 var correct = document.querySelector('.correct');
 var incorrect = document.querySelector('.incorrect');
 var timerElement = document.querySelector('.timer-count');
-var startButton = document.getElementById('start-btn');
-var wordBlank = document.querySelector('questions')
+
+// var question_box = document.querySelector('questions')
 var correctCounter = 0;
 var incorrectCounter = 0;
 var isQuizFinished = false;
 var timer;
 var timerCount;
-var currentQuestionIndex = 0;
+// var currentQuestionIndex = 0;
+const startButton = document.getElementById('start-btn');
+const questionElement = document.getElementById("questions")
+const answerButtonsElement = document.getElementById('answers-buttons')
+const questionContainerElement = document.getElementById('card word-guess')
+
+let shuffleQuestions, currentQuestionIndex
 
 var score;
 
 startButton.addEventListener('click', startQuiz);
 
+
+function loadQuestion() {
+}
+
+
 function startQuiz(){
 console.log('Quiz Started')
+shuffleQuestions = questions.sort(() => Math.random () - .5)
+currentQuestionIndex = 0;
+setNextQuestion()
 }
 
 function setNextQuestion(){
+showQuestions(shuffleQuestions[currentQuestionIndex])
+}
 
+function showQuestions(questions){
+questionElement.innerText = questions.questions
 }
 
 
