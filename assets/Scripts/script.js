@@ -41,7 +41,7 @@ function startQuiz(){
 console.log('Quiz Started')
 isQuizFinished = false;
 currentQuestionIndex = 0
-timerCount = 1000;
+timerCount = 15;
     startTimer()
     loadQuestion() 
     selectAnswer()
@@ -51,7 +51,7 @@ timerCount = 1000;
 
 //  function to finish quiz
 function quizOver() {
-    questions.textContent = "YOU WON!!!🏆 ";
+    questionElement.textContent = "YOU WON!!!🏆 ";
     correctCounter++
     startButton.disabled = false;
     isQuizFinished = true;
@@ -59,7 +59,7 @@ function quizOver() {
   }
 
   function loseGame() {
-    questions.textContent = 'You Lose';
+    questionElement.textContent = 'You Lose';
     incorrectCounter++
     startButton.disabled = false;
 
@@ -94,7 +94,7 @@ function loadQuestion() {
     var randomIndex = Math.floor(Math.random() * questionArray.length); // Corrected random index calculation
     var currentQuestion = questionArray[randomIndex]; // Using a different variable name
     questionElement.textContent = currentQuestion.question;
-    answerButtonsElement.innerHTML = ''
+    // answerButtonsElement.innerText = card-word-guess
     currentQuestion.answer.forEach (answer => {
         const button = document.createElement ('button')
         button.innerText = answer.text
@@ -114,9 +114,7 @@ function loadQuestion() {
 function selectAnswer(e){
 }
 
-function loadAnswers(){
 
-}
 // creating an array and passing the number, questions, options and answers
 var questionArray = [
     {
