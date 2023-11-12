@@ -87,24 +87,52 @@ function startTimer () {
 }
 
 function loadQuestion() {
-    question = question[Math.floor(Math.random() - .5 )]
-     
-
+    var randomIndex = Math.floor(Math.random() * question.length); // Corrected random index calculation
+    var currentQuestion = question[randomIndex]; // Using a different variable name
+    // Rest of your code to display the currentQuestion
+    question.answer.array.forEach(element => {
+        
+    });
+    return (currentQuestion)
+    // ...
 }
 
 
 
 // creating an array and passing the number, questions, options and answers
-let question = [
+var question = [
     {
-        question: "",
+       Number: 1,
+        question: " what does the fox say",
         answer: [
-            {text: '', correct: true},
-            {text: '', correct: false},
-            {text: '', correct: false},
-            {text: '', correct: false},
+            {text: 'meow', correct: true},
+            {text: 'yelp', correct: false},
+            {text: 'no', correct: false},
+            {text: 'yes', correct: false},
         ]
     },
+
+    {
+        Number: 2,
+         question: " what does the dog say",
+         answer: [
+             {text: 'bark', correct: true},
+             {text: 'yelp', correct: false},
+             {text: 'no', correct: false},
+             {text: 'yes', correct: false},
+         ]
+     },
+
+     {
+        Number: 3,
+         question: " what does the cat say",
+         answer: [
+             {text: 'meaw', correct: true},
+             {text: 'yelp', correct: false},
+             {text: 'no', correct: false},
+             {text: 'yes', correct: false},
+         ]
+     },
     {
         Number: 2,
         question: "Name some of the JavaScript features ?",
