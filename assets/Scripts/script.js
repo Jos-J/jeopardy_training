@@ -66,10 +66,6 @@ var questionArray = [
 
  // Assuming you have only one timer element
 
-function init() {
-    getCorrect();
-    getIncorrect();
-  }
 
 
 startButton.addEventListener('click', startQuiz, startTimer)
@@ -156,7 +152,7 @@ function loadQuestion(questionArray) {
             document.body.appendChild(label);
             document.body.appendChild(document.createElement('br'));
         }
-            // document.body.appendChild(document.createElement('br'));
+            document.body.appendChild(document.createElement('br'));
 }
 }
 
