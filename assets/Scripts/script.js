@@ -21,6 +21,48 @@ var answer = document.getElementsByClassName('an-buttons')
 
 var startButton 
 
+      window.onload = function () {
+        var questionArray = [
+    
+        ]}
+
+var questionArray = [
+    {
+        question: " What does the fox say",
+        choices: ['Idk','yelp', 'no', 'yes'],
+        answer: 1     
+    }, 
+    
+    {
+            question: " What does the dog say",
+            choices: ['meow','roof', 'no', 'yes'],
+            answer: 2           
+     },
+     {
+            question: 'Is syntax importamt in HTML, CSS, JavaScript',
+            choices: ['idk','no','yes','maybe'],
+            answer: 3
+     },
+      {     question: "JavaScript is the same as Java?",
+            choices:['no', 'yes', 'idk','whats java'],
+            answer: 1
+      },
+      {
+            question: 's JavaScript case-sensitive?',
+            choices: ['no', 'yes', 'all the above', 'none of the above'],
+            answer: 2
+      },
+      {
+            question: 'Where is the correct place to insert the JavaScript script',
+            choices: ['body', 'header', 'footor', 'idk'],
+            answer: 3
+      },
+      {
+            question: 'Rate my quiz',
+            choices: ['A', 'B', 'C', 'D'],
+            answer: 1
+      }
+];
 
  // Assuming you have only one timer element
 
@@ -29,25 +71,14 @@ function init() {
     getIncorrect();
   }
 
+
 startButton.addEventListener('click', startQuiz, startTimer)
 nextButton.addEventListener ('click', () => {
-    // loadQuestion()
-    // selectAnswer()
     // setNextQuestion()
 })
 
 
-function startQuiz(){ 
-console.log('Quiz Started')
-isQuizFinished = false;
-answerButtonsElement
-timerCount = 15;
-    startTimer()
-    loadQuestion() 
-    selectAnswer()
-    // questionContainerElement.classList.add('show')
-    // setNextQuestion()
-    }
+
 
 //  function to finish quiz
 function quizOver() {
@@ -90,12 +121,12 @@ function startTimer () {
     }, 1000);
 }
 
-function loadQuestion() {
+function loadQuestion(questionArray) {
     var randomIndex = Math.floor(Math.random() * questionArray.length); // Corrected random index calculation
     var currentQuestion = questionArray[randomIndex]; // Using a different variable name
     questionElement.textContent = currentQuestion.question;
     answerButtonsElement.innerText = currentQuestion.answer
-    currentQuestion.answer.forEach (answer => {
+    questionArray.for (answer => {
         const button = document.createElement ('button')
         button.innerText = answer.text
         button.classList.add('btn')
@@ -125,71 +156,23 @@ function loadQuestion() {
             document.body.appendChild(label);
             document.body.appendChild(document.createElement('br'));
         }
-            document.body.appendChild(document.createElement('br'));
-    
+            // document.body.appendChild(document.createElement('br'));
+}
 }
 
 function selectAnswer(e){
 }
 
 
-// creating an array and passing the number, questions, options and answers
-var questionArray = [
-    {
-        question: " What does the fox say",
-        choices: ['Idk','yelp', 'no', 'yes'],
-        answer: 1     
-    }, 
-    
-    {
-            question: " What does the dog say",
-            choices: ['meow','roof', 'no', 'yes'],
-            answer: 2           
-     },
-     {
-            question: 'Is syntax importamt in HTML, CSS, JavaScript',
-            choices: ['idk','no','yes','maybe'],
-            answer: 3
-     },
-      {     question: "JavaScript is the same as Java?",
-            choices:['no', 'yes', 'idk','whats java'],
-            answer: 1
-      },
-      {
-            question: 's JavaScript case-sensitive?',
-            choices: ['no', 'yes', 'all the above', 'none of the above'],
-            answer: 2
-      },
-      {
-            question: 'Where is the correct place to insert the JavaScript script',
-            choices: ['body', 'header', 'footor', 'idk'],
-            answer: 3
-      },
-      {
-            question: 'Rate my quiz',
-            choices: ['A', 'B', 'C', 'D'],
-            answer: 1
-      }
-];
 
-// for ( var i = 0; i < questionArray.length; i++){
-//     var questionArray = questionArray[i].question;
-//     document.write (questionArray);
-//     var options = questionArray.choices;
-//     document.body.appendChild(document.createElement('br'));
-//     var name = 'selector'+i;
-//     for( var opt in options) {
-//         var radioEle = document.createElement('input');
-//         radioEle.type = 'selector';
-//         radioEle.value = options[opt];
-//         radioEle.name = name;
-//         document.body.appendChild(radioEle);
-//         var label = document.createElement('label')
-//         label.innerHTML= options[opt];
-//         document.body.appendChild(label);
-//         document.body.appendChild(document.createElement('br'));
-//     }
-//         document.body.appendChild(document.createElement('br'));
-
-// }
-}
+function startQuiz(){ 
+    console.log('Quiz Started')
+    isQuizFinished = false;
+    // answerButtonsElement
+    timerCount = 15;
+        startTimer()
+        loadQuestion(questionArray) 
+        // selectAnswer(e)
+        
+        // setNextQuestion()
+        }
