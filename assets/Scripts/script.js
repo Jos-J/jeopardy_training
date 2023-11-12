@@ -5,6 +5,7 @@ var incorrect = document.querySelector('.incorrect');
 var timerElement = document.querySelector('.timer-count');
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementsByClassName( "card word-guess")
 var timer;
 var timerCount;
 var scoreForm
@@ -23,15 +24,15 @@ var startButton
 
  // Assuming you have only one timer element
 
-// function init() {
-//     getCorrect();
-//     getIncorrect();
-//   }
+function init() {
+    getCorrect();
+    getIncorrect();
+  }
 
 startButton.addEventListener('click', startQuiz, startTimer)
 nextButton.addEventListener ('click', () => {
-    loadQuestion()
-    selectAnswer()
+    // loadQuestion()
+    // selectAnswer()
     // setNextQuestion()
 })
 
@@ -41,9 +42,11 @@ console.log('Quiz Started')
 isQuizFinished = false;
 currentQuestionIndex = 0
 timerCount = 1000;
-
     startTimer()
     loadQuestion() 
+    selectAnswer()
+    questionContainerElement.classList.add('show')
+    // setNextQuestion()
     }
 
 //  function to finish quiz
@@ -88,9 +91,9 @@ function startTimer () {
 }
 
 function loadQuestion() {
-    var randomIndex = Math.floor(Math.random() * question.length); // Corrected random index calculation
-    var currentQuestion = question[randomIndex]; // Using a different variable name
-    questionElement.textContent = question.currentQuestion;
+    var randomIndex = Math.floor(Math.random() * questionsArray.length); // Corrected random index calculation
+    var currentQuestion = questionsArray[randomIndex]; // Using a different variable name
+    questionElement.textContent = currentQuestion.question;
     answerButtonsElement.innerHTML = 'btn-grid'
     currentQuestion.answer.forEach (answer => {
         const button = document.createElement ('button')
@@ -113,10 +116,10 @@ function selectAnswer(e){
 }
 
 // creating an array and passing the number, questions, options and answers
-var question = [
+var questionsArray = [
     {
        Number: 1,
-        question: " what does the fox say",
+        question: " What does the fox say",
         answer: [
             {text: 'meow', correct: true},
             {text: 'yelp', correct: false},
@@ -214,9 +217,5 @@ var question = [
     // }
 ]
 
-// function showQuestions(){
-//     const question_box = document.querySelector(".question_box");
-//     let showQuestions ="<span>" + questions[1].Number + "<span>";
-//     showQuestions.innerHTML = question_box;
-// }
+
 
