@@ -108,9 +108,25 @@ function loadQuestion() {
         console.log(answerButtonsElement)
     })
     
-    // question.options.forEach(question, answer)
-   
-    // ...
+    for ( var i = 0; i < questionArray.length; i++){
+        var questionArray = questionArray[i].question;
+        document.write (questionArray);
+        var options = questionArray.choices;
+        document.body.appendChild(document.createElement('br'));
+        var name = 'selector'+i;
+        for( var opt in options) {
+            var radioEle = document.createElement('input');
+            radioEle.type = 'selector';
+            radioEle.value = options[opt];
+            radioEle.name = name;
+            document.body.appendChild(radioEle);
+            var label = document.createElement('label')
+            label.innerHTML= options[opt];
+            document.body.appendChild(label);
+            document.body.appendChild(document.createElement('br'));
+        }
+            document.body.appendChild(document.createElement('br'));
+    
 }
 
 function selectAnswer(e){
@@ -121,96 +137,59 @@ function selectAnswer(e){
 var questionArray = [
     {
         question: " What does the fox say",
-        choices: ['meow','yelp', 'no', 'yes'],
+        choices: ['Idk','yelp', 'no', 'yes'],
         answer: 1     
     }, 
     
     {
             question: " What does the dog say",
-            choices: ['meow','yelp', 'no', 'yes'],
-            answer: 2    
-            
-        },
-        
-    
+            choices: ['meow','roof', 'no', 'yes'],
+            answer: 2           
+     },
+     {
+            question: 'Is syntax importamt in HTML, CSS, JavaScript',
+            choices: ['idk','no','yes','maybe'],
+            answer: 3
+     },
+      {     question: "JavaScript is the same as Java?",
+            choices:['no', 'yes', 'idk','whats java'],
+            answer: 1
+      },
+      {
+            question: 's JavaScript case-sensitive?',
+            choices: ['no', 'yes', 'all the above', 'none of the above'],
+            answer: 2
+      },
+      {
+            question: 'Where is the correct place to insert the JavaScript script',
+            choices: ['body', 'header', 'footor', 'idk'],
+            answer: 3
+      },
+      {
+            question: 'Rate my quiz',
+            choices: ['A', 'B', 'C', 'D'],
+            answer: 1
+      }
+];
 
-    //  {
-    //     Number: 3,
-    //      question: " what does the cat say",
-    //      answer: [
-    //          {text: 'meaw', correct: true},
-    //          {text: 'yelp', correct: false},
-    //          {text: 'no', correct: false},
-    //          {text: 'yes', correct: false},
-    //      ]
-    //  },
-    // {
-    //     Number: 2,
-    //     question: "Name some of the JavaScript features ?",
-    //     answer: "All the Above",
-    //     options: [
-    //         "open and cross platform",
-    //         "designed for creating network-centric applications",
-    //         "complementary to and integrated with HTML",
-    //         "All the above",
-    //     ]
-    // },
-    // {
-    //     Number: 3,
-    //     question: "Is syntax importamt in HTML, CSS, JavaScript?",
-    //     answer: "True",
-    //     options: [
-    //         "True",
-    //         "False",
-    //         "None of the above",
-    //         "All the above",
-    //     ]
-    // },
-    // {
-    //     Number: 4,
-    //     question: "JavaScript is the same as Java?",
-    //     answer: "False",
-    //     options: [
-    //         "True",
-    //         "False",
-    //         "None of the above",
-    //         "All the above",
-    //     ]
-    // },
-    // {
-    //     Number: 5,
-    //     question: "Is JavaScript case-sensitive?",
-    //     answer: "True",
-    //     options: [
-    //         "True",
-    //         "False",
-    //         "None of the above",
-    //         "All the above",
-    //     ]
-    // },
-    // {
-    //     Number: 6,
-    //     question: "Where is the correct place to insert the JavaScript script?",
-    //     answer: "Body",
-    //     options: [
-    //         "Head",
-    //         "Body",
-    //         "Footer",
-    //         "All the above",
-    //     ]
-    // },
-    // { Number: 7,
-    //     question: "Rate my quiz",
-    //     answer: "A worthy",
-    //     options: [
-    //         "A worthy",
-    //         "B worthy",
-    //         "C worthy",
-    //         "D worthy",
-    //         "None of the Above"
-    //     ]
-    // }
-]
+// for ( var i = 0; i < questionArray.length; i++){
+//     var questionArray = questionArray[i].question;
+//     document.write (questionArray);
+//     var options = questionArray.choices;
+//     document.body.appendChild(document.createElement('br'));
+//     var name = 'selector'+i;
+//     for( var opt in options) {
+//         var radioEle = document.createElement('input');
+//         radioEle.type = 'selector';
+//         radioEle.value = options[opt];
+//         radioEle.name = name;
+//         document.body.appendChild(radioEle);
+//         var label = document.createElement('label')
+//         label.innerHTML= options[opt];
+//         document.body.appendChild(label);
+//         document.body.appendChild(document.createElement('br'));
+//     }
+//         document.body.appendChild(document.createElement('br'));
 
-
-
+// }
+}
