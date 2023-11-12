@@ -45,7 +45,7 @@ timerCount = 1000;
     startTimer()
     loadQuestion() 
     selectAnswer()
-    questionContainerElement.classList.add('show')
+    // questionContainerElement.classList.add('show')
     // setNextQuestion()
     }
 
@@ -91,10 +91,10 @@ function startTimer () {
 }
 
 function loadQuestion() {
-    var randomIndex = Math.floor(Math.random() * questionsArray.length); // Corrected random index calculation
-    var currentQuestion = questionsArray[randomIndex]; // Using a different variable name
+    var randomIndex = Math.floor(Math.random() * questionArray.length); // Corrected random index calculation
+    var currentQuestion = questionArray[randomIndex]; // Using a different variable name
     questionElement.textContent = currentQuestion.question;
-    answerButtonsElement.innerHTML = 'btn-grid'
+    answerButtonsElement.innerHTML = ''
     currentQuestion.answer.forEach (answer => {
         const button = document.createElement ('button')
         button.innerText = answer.text
@@ -112,11 +112,13 @@ function loadQuestion() {
 }
 
 function selectAnswer(e){
-
 }
 
+function loadAnswers(){
+
+}
 // creating an array and passing the number, questions, options and answers
-var questionsArray = [
+var questionArray = [
     {
        Number: 1,
         question: " What does the fox say",
