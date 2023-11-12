@@ -17,7 +17,7 @@ var timer;
 var shuffledQuestions;
 var score = document.getElementById('answer-buttons')
 var answer = document.getElementById('answer')
-var currentQuestionIndex = 1;
+var currentQuestionIndex = 0
 var startButton 
 
 
@@ -88,6 +88,7 @@ function startTimer () {
 
 function loadQuestion() {
     question = question[Math.floor(Math.random() - .5 )]
+     
 
 }
 
