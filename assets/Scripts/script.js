@@ -1,79 +1,100 @@
+// var questions = document.getElementById( 'questions')
 var correct = document.querySelector('.correct');
 var incorrect = document.querySelector('.incorrect');
-var timerElement = document.querySelector('.timer-count');
-
-// var question_box = document.querySelector('questions')
+var timerElement = document.getElementsByClassName('timer-count');
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var timer;
+var timerCount;
+var scoreForm
+var initialsInput;
+var timerCount = 80;
+var questionElement = document.getElementById('question')
 var correctCounter = 0;
 var incorrectCounter = 0;
 var isQuizFinished = false;
 var timer;
-var timerCount;
-// var currentQuestionIndex = 0;
-const startButton = document.getElementById('start-btn');
-const questionElement = document.getElementById("questions")
-const answerButtonsElement = document.getElementById('answers-buttons')
-const questionContainerElement = document.getElementById('card word-guess')
+var shuffledQuestions;
+var score = document.getElementById('answer-buttons')
+var answer = document.getElementById('answer')
+var currentQuestionIndex = 1;
+var startButton 
 
-let shuffleQuestions, currentQuestionIndex
 
-var score;
+// function init() {
+//     getCorrect();
+//     getIncorrect();
+//   }
 
-startButton.addEventListener('click', startQuiz);
+startButton.addEventListener('click', startQuiz, startTimer)
+nextButton.addEventListener ('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
+
+function startQuiz(){ 
+console.log('Quiz Started')
+// startButton.classList.add('hide')
+// shuffledQuestions = questions.sort(() => Math.random() - .5)
+isQuizFinished = false;
+currentQuestionIndex = 0
+timerCount = 1000;
+// startButton.disabled = true;
+    startTimer()
+    loadQuestion() 
+    }
+
+//  function to finish quiz
+function quizOver() {
+    questions.textContent = "YOU WON!!!🏆 ";
+    correctCounter++
+    startButton.disabled = false;
+    isQuizFinished = true;
+    giveScore() 
+  }
+
+  function loseGame() {
+    questions.textContent = 'You Lose';
+    incorrectCounter++
+    startButton.disabled = false;
+
+  }
+
+
+//  function for timer to start and stop when move to next questions and when you get correct question
+function startTimer () {
+    //  timer start
+    timer = setInterval(function() {
+        timerCount--;
+        timerElement.textContent = timerCount;
+        if(timerCount >= 0) {
+            // test if win condition is met
+            if( isQuizFinished && timerCount > 0 ) {
+                // clears interval adn stops timer
+                clearInterval(timer);
+                quizOver();
+            }
+        }
+        // if timer runs out
+        if(timerCount === 0 ){
+            // Clears interval
+            clearInterval(timer)
+            loseGame();
+        }
+
+    }, 1000);
+}
 
 function loadQuestion() {
-}
-
-
-function startQuiz(){
-console.log('Quiz Started')
-shuffleQuestions = questions.sort(() => Math.random () - .5)
-currentQuestionIndex = 0;
-setNextQuestion()
-}
-
-function setNextQuestion(){
-showQuestions(shuffleQuestions[currentQuestionIndex])
-}
-
-function showQuestions(questions){
-questionElement.innerText = questions.questions
-}
-
-
-function selectAnswer(){
+    question = question[Math.floor(Math.random() - .5 )]
 
 }
-
-// The init function is called when the page loads 
-function init() {
-  getCorrect();
-  getIncorrect();
-}
-
-// The startGame function is called when the start button is clicked
-function startGame() {
-  isQuizFinished = false;
-  timerCount = 600;
-  // Prevents start button from being clicked when round is in progress
-  startButton.disabled = true;
-  renderBlanks()
-  startTimer()
-}
-
-function quizOver() {
-  questions.textContent = "YOU WON!!!🏆 ";
-  correctCounter++
-  startButton.disabled = false;
-  setWins()
-}
-
-
 
 
 
 // creating an array and passing the number, questions, options and answers
-let questions = [
+let question = [
     {
         question: "",
         answer: [
