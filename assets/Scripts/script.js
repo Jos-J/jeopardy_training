@@ -17,7 +17,7 @@ var incorrectCounter = 0;
 var isQuizFinished = false;
 var timer;
 
-var answer = document.getElementById('answer')
+var answer = document.getElementsByClassName('an-buttons')
 
 var startButton 
 
@@ -40,7 +40,7 @@ nextButton.addEventListener ('click', () => {
 function startQuiz(){ 
 console.log('Quiz Started')
 isQuizFinished = false;
-currentQuestionIndex = 0
+answerButtonsElement
 timerCount = 15;
     startTimer()
     loadQuestion() 
@@ -94,16 +94,18 @@ function loadQuestion() {
     var randomIndex = Math.floor(Math.random() * questionArray.length); // Corrected random index calculation
     var currentQuestion = questionArray[randomIndex]; // Using a different variable name
     questionElement.textContent = currentQuestion.question;
-    // answerButtonsElement.innerText = card-word-guess
+    answerButtonsElement.innerText = currentQuestion.answer
     currentQuestion.answer.forEach (answer => {
         const button = document.createElement ('button')
         button.innerText = answer.text
         button.classList.add('btn')
-        // if( answer.correct){
-        //     button.dataset.correct = answer.correct
-        // }
+        if( answer.correct){
+            button.dataset.correct = answer.correct
+        }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
+        // console.log(button)
+        console.log(answerButtonsElement)
     })
     
     // question.options.forEach(question, answer)
@@ -118,37 +120,30 @@ function selectAnswer(e){
 // creating an array and passing the number, questions, options and answers
 var questionArray = [
     {
-       Number: 1,
         question: " What does the fox say",
-        answer: [
-            {text: 'meow', correct: true},
-            {text: 'yelp', correct: false},
-            {text: 'no', correct: false},
-            {text: 'yes', correct: false},
-        ]
-    },
-
+        choices: ['meow','yelp', 'no', 'yes'],
+        answer: 1     
+    }, 
+    
     {
-        Number: 2,
-         question: " what does the dog say",
-         answer: [
-             {text: 'bark', correct: true},
-             {text: 'yelp', correct: false},
-             {text: 'no', correct: false},
-             {text: 'yes', correct: false},
-         ]
-     },
+            question: " What does the dog say",
+            choices: ['meow','yelp', 'no', 'yes'],
+            answer: 2    
+            
+        },
+        
+    
 
-     {
-        Number: 3,
-         question: " what does the cat say",
-         answer: [
-             {text: 'meaw', correct: true},
-             {text: 'yelp', correct: false},
-             {text: 'no', correct: false},
-             {text: 'yes', correct: false},
-         ]
-     },
+    //  {
+    //     Number: 3,
+    //      question: " what does the cat say",
+    //      answer: [
+    //          {text: 'meaw', correct: true},
+    //          {text: 'yelp', correct: false},
+    //          {text: 'no', correct: false},
+    //          {text: 'yes', correct: false},
+    //      ]
+    //  },
     // {
     //     Number: 2,
     //     question: "Name some of the JavaScript features ?",
