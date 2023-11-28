@@ -106,6 +106,23 @@
     padding: 55px;
   }
   
+  /* Add styles for the score container */
+.score-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#score-text {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+}
+
+#correct-count, #incorrect-count {
+  font-weight: bold;
+  margin: 0 5px;
+}
+  
   @media screen and (max-width: 1183px) {
     main {
       flex-direction: column;
