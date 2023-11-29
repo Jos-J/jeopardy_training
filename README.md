@@ -46,7 +46,7 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
- 
+ [Website](https://jif945.github.io/jeopardy_training/)
  ![Screenshot of App](Screenshot%202023-11-27%20203603.png)
 
 
