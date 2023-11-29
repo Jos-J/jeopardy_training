@@ -106,7 +106,7 @@
 .score-container {
   text-align: center;
   margin: 20px 0;
-}
+} */
 
 #score-text {
   font-size: 16px;
@@ -114,10 +114,10 @@
   color: #333;
 }
 
-#correct-display, #incorrect-display {
+ #correct-display, #incorrect-display {
   font-weight: bold;
   margin: 0 5px;
-}
+} 
   
   @media screen and (max-width: 1183px) {
     main {

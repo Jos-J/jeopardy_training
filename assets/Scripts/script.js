@@ -53,7 +53,7 @@ var questionArray = [
 function startQuiz() {
     console.log('Quiz Started');
     isQuizFinished = false;
-    timerCount = 45;
+    timerCount = 60;
     startTimer();
     loadQuestion();
 }
@@ -129,9 +129,9 @@ function quizOver() {
         questionElement.textContent = "Quiz Over. Better luck next time!";
     }
 
-   // Display or process the correct and incorrect answers stored in the arrays
-//    console.log("Correct Answers:", correctAnswers);
-//    console.log("Incorrect Answers:", incorrectAnswers);
+//    Display or process the correct and incorrect answers stored in the arrays
+   console.log("Correct Answers:", correctAnswers);
+   console.log("Incorrect Answers:", incorrectAnswers);
 
     //  compare correct and incorrect answers
     compareAnswers();
@@ -158,15 +158,15 @@ function restartQuiz() {
 function updateScore() {
     const correctCountElement = document.getElementById('correct-count');
     const incorrectCountElement = document.getElementById('incorrect-count');
-    // const correctDisplayElement = document.getElementById('correct-display');
-    // const incorrectDisplayElement = document.getElementById('incorrect-display');
-    // const scoreTextElement = document.getElementById('score-text');
+    const correctDisplayElement = document.getElementById('correct-display');
+    const incorrectDisplayElement = document.getElementById('incorrect-display');
+    const scoreTextElement = document.getElementById('score-text');
 
     correctCountElement.textContent = correctCounter;
     incorrectCountElement.textContent = incorrectCounter;
 
-    // correctDisplayElement.textContent = correctCounter;
-    // incorrectDisplayElement.textContent = incorrectCounter;
+    correctDisplayElement.textContent = correctCounter;
+    incorrectDisplayElement.textContent = incorrectCounter;
 
     // Display winning or losing message
     if (correctCounter > incorrectCounter) {
