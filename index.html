@@ -8,14 +8,12 @@
     
   </head>
   <body>
-    <div id="card-results" class="card-results">
-      <p id="score-text">Score: <span id="correct-count">0</span> correct, <span id="incorrect-count">0</span> incorrect</p>
   </div>
     <header>
       <div class= "large-font">Jeopardy Training </div>
       <div class="controls">
         <button id="start-btn" class="start-btn btn"> Start</button>
-        <button id="next-btn" class="next-btn btn"> Next </button>
+        <!-- <button id="next-btn" class="next-btn btn"> Next </button> -->
       </div>
     </header>
 
@@ -32,21 +30,29 @@
       </div>
       </section>
 
-      <!-- <section>
-        <div class="card results">
-          <div class = "correct-incorrect-container">
-          <div>
-          <h2> Correct : <span class="correct"> 0 </span> </h2>
-          <h2> Incorrect: <span class="incorrect"> 0 </span></h2>
-        </div>
-          <button class="reset-button"> Mulligan </button>
-      </div>
+      <section>
+        <div class="card results" id="results-card">
+            <div class="correct-incorrect-container">
+                <div>
+                    <h2>Correct: <span id="correct-count">0</span></h2>
+                    <h2>Incorrect: <span id="incorrect-count">0</span></h2>
+                </div>
+                <button class="reset-button">Mulligan</button>
+            </div>
+            <div id="score-container" class="score-container">
+                <p id="score-text">Score: <span id="correct-display">0</span> correct, <span id="incorrect-display">0</span> incorrect</p>
+            </div>
+          </div>
           <div class= "card timer">
             <div class = "timer-text">
             <div class="large-font timer-count">10:00</div>
             <h3> Time remaining</h3>
-          </div> -->
+          </div>
         
+        </div>
+    </section>
+          <!-- <button class="reset-button"> Mulligan </button> -->
+      
           </div>
         </div>
       </section>

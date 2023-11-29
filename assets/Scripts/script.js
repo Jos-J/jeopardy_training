@@ -14,13 +14,13 @@ var incorrectAnswers = [];
 
 var questionArray = [
     {
-        question: "What does the fox say",
-        choices: ['Idk', 'yelp', 'no', 'yes'],
+        question: "Inside which HTML element do we put the JavaScript",
+        choices: ['<javascript>', '<script>', '<js>', '<scripting>'],
         answer: 1
     },
     {
-        question: "What does the dog say",
-        choices: ['meow', 'roof', 'no', 'yes'],
+        question: "Which operator is used to assign a value to a variable?",
+        choices: ['*', '-', 'x', '='],
         answer: 2
     },
     {
@@ -130,31 +130,66 @@ function quizOver() {
     }
 
    // Display or process the correct and incorrect answers stored in the arrays
-   console.log("Correct Answers:", correctAnswers);
-   console.log("Incorrect Answers:", incorrectAnswers);
+//    console.log("Correct Answers:", correctAnswers);
+//    console.log("Incorrect Answers:", incorrectAnswers);
 
     //  compare correct and incorrect answers
     compareAnswers();
 }
 
-// Update the score display in the HTML
+// Function to restart the quiz
+function restartQuiz() {
+    // Reset counters and other necessary variables
+    correctCounter = 0;
+    incorrectCounter = 0;
+
+    // Reset timer if needed
+    clearInterval(timer);
+    timerCount = 15;
+
+    // Update the score display
+    updateScore();
+
+    // Restart the quiz
+    startQuiz();
+}
+
+// Update the score display in the "card results" and "correct-incorrect-container"
 function updateScore() {
-    document.getElementById('correct-count').textContent = correctCounter;
-    document.getElementById('incorrect-count').textContent = incorrectCounter;
+    const correctCountElement = document.getElementById('correct-count');
+    const incorrectCountElement = document.getElementById('incorrect-count');
+    // const correctDisplayElement = document.getElementById('correct-display');
+    // const incorrectDisplayElement = document.getElementById('incorrect-display');
+    // const scoreTextElement = document.getElementById('score-text');
+
+    correctCountElement.textContent = correctCounter;
+    incorrectCountElement.textContent = incorrectCounter;
+
+    // correctDisplayElement.textContent = correctCounter;
+    // incorrectDisplayElement.textContent = incorrectCounter;
+
+    // Display winning or losing message
+    if (correctCounter > incorrectCounter) {
+        scoreTextElement.textContent = "Congratulations! You're the winner!";
+    } else if (correctCounter < incorrectCounter) {
+        scoreTextElement.textContent = "Sorry, you lost. Better luck next time!";
+    } else {
+        scoreTextElement.textContent = "It's a tie! You have an equal number of correct and incorrect answers.";
+    }
 }
 
 function compareAnswers() {
     // Display the number of correct and incorrect answers
     questionElement.textContent = `Correct Answers: ${correctCounter}, Incorrect Answers: ${incorrectCounter}`;
 
-    // Compare the number of correct and incorrect answers
-    if (correctCounter > incorrectCounter) {
-        questionElement.textContent += "\nCongratulations! You're the winner!";
-    } else if (correctCounter < incorrectCounter) {
-        questionElement.textContent += "\nSorry, you lost. Better luck next time!";
-    } else {
-        questionElement.textContent += "\nIt's a tie! You have an equal number of correct and incorrect answers.";
-    }
+    // // Compare the number of correct and incorrect answers
+    // if (correctCounter > incorrectCounter) {
+    //     questionElement.textContent += "\nCongratulations! You're the winner!";
+    // } else if (correctCounter < incorrectCounter) {
+    //     questionElement.textContent += "\nSorry, you lost. Better luck next time!";
+    // } else {
+    //     questionElement.textContent += "\nIt's a tie! You have an equal number of correct and incorrect answers.";
+    // }
     updateScore();
 }
 
@@ -167,4 +202,6 @@ function loseGame() {
 }
 
 startButton.addEventListener('click', startQuiz);
+const mulliganButton = document.querySelector('.reset-button');
+mulliganButton.addEventListener('click', restartQuiz);
 

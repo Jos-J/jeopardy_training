@@ -66,7 +66,8 @@
   
   .word-guess {
     width: 55vw;
-    height: 400px;
+    height: 640px;
+    
   }
   
   .results {
@@ -82,11 +83,6 @@
       rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
     margin: auto;
     padding: 20px;
-  }
-  
-  
-  .word-blanks {
-    line-height: 360px;
   }
   
   .large-font {
@@ -106,7 +102,7 @@
     padding: 55px;
   }
   
-  /* Add styles for the score container */
+ /* Add styles for the score container */
 .score-container {
   text-align: center;
   margin: 20px 0;
@@ -118,7 +114,7 @@
   color: #333;
 }
 
-#correct-count, #incorrect-count {
+#correct-display, #incorrect-display {
   font-weight: bold;
   margin: 0 5px;
 }
