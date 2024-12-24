@@ -53,8 +53,8 @@ THEN I can save my initials and my score
 
 
 ## About
-- [My-GitHub](https://github.com/JIF945)
-- [Email](mailto:joshua.james918@gmail.com) for any questions. 
+- [My-GitHub](https://jos-j.github.io/jeopardy_training/)
+ 
 
 
 
