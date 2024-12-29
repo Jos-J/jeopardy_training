@@ -4,15 +4,16 @@ var timerElement = document.querySelector('.timer-count');
 var startButton = document.getElementById('start-btn');
 var nextButton = document.getElementById('next-btn');
 var timer;
-var timerCount = 15;
+var timerCount = 60;  // Ensure the initial timer count is 60
 var correctCounter = 0;
 var incorrectCounter = 0;
 var isQuizFinished = false;
 var currentQuestion;
 var correctAnswers = [];
 var incorrectAnswers = [];
+var usedQuestions = [];
 
-var questionArray = [
+var originalQuestions = [
     {
         question: "Inside which HTML element do we put the JavaScript",
         choices: ['<javascript>', '<script>', '<js>', '<scripting>'],
@@ -21,44 +22,46 @@ var questionArray = [
     {
         question: "Which operator is used to assign a value to a variable?",
         choices: ['*', '-', 'x', '='],
-        answer: 2
+        answer: 3
     },
     {
-        question: 'Is syntax important in HTML, CSS, JavaScript',
+        question: 'Is syntax important in HTML, CSS, JavaScript?',
         choices: ['idk', 'no', 'yes', 'maybe'],
-        answer: 3
+        answer: 2
     },
     {
         question: "JavaScript is the same as Java?",
         choices: ['no', 'yes', 'idk', 'whats java'],
-        answer: 1
+        answer: 0
     },
     {
         question: 'Is JavaScript case-sensitive?',
         choices: ['no', 'yes', 'all the above', 'none of the above'],
-        answer: 2
+        answer: 1
     },
     {
-        question: 'Where is the correct place to insert the JavaScript script',
+        question: 'Where is the correct place to insert the JavaScript script?',
         choices: ['body', 'header', 'footer', 'idk'],
-        answer: 3
+        answer: 2
     },
     {
         question: 'Rate my quiz',
         choices: ['A', 'B', 'C', 'D'],
-        answer: 1
-    },
+        answer: 0
+    }
 ];
 
 function startQuiz() {
     console.log('Quiz Started');
     isQuizFinished = false;
     timerCount = 60;
+    usedQuestions = [];  // Reset used questions to start fresh
     startTimer();
     loadQuestion();
 }
 
 function startTimer() {
+    clearInterval(timer);  // Prevent multiple timers from running
     timer = setInterval(function () {
         timerCount--;
         timerElement.textContent = timerCount;
@@ -70,48 +73,61 @@ function startTimer() {
 }
 
 function loadQuestion() {
-    var randomIndex = Math.floor(Math.random() * questionArray.length);
-    currentQuestion = questionArray[randomIndex];
+    if (usedQuestions.length === originalQuestions.length) { // If all questions are used
+        quizOver();
+        return;
+    }
+    
+    var randomIndex = Math.floor(Math.random() * originalQuestions.length);
+    
+    // Avoid repeating questions
+    while (usedQuestions.includes(originalQuestions[randomIndex])) {
+        randomIndex = Math.floor(Math.random() * originalQuestions.length);
+    }
+
+    currentQuestion = originalQuestions[randomIndex];
+    usedQuestions.push(currentQuestion);
+
+    var correctAnswerIndex = currentQuestion.answer; // Get the correct answer index directly
+
     questionElement.textContent = currentQuestion.question;
 
     answerButtonsElement.innerHTML = '';
 
-    currentQuestion.choices.forEach(answer => {
+    currentQuestion.choices.forEach((answer, index) => {
         const button = document.createElement('button');
         button.innerText = answer;
         button.classList.add('btn');
-        button.addEventListener('click', () => selectAnswer(answer));
+        button.addEventListener('click', () => selectAnswer(index, correctAnswerIndex));
         answerButtonsElement.appendChild(button);
     });
 }
 
-function selectAnswer(selectedAnswer) {
-    var correctAnswer = currentQuestion.choices[currentQuestion.answer];
+function selectAnswer(selectedIndex, correctAnswerIndex) {
+    // Reset previous styles
+    Array.from(answerButtonsElement.children).forEach(button => {
+        button.classList.remove('correct', 'incorrect');
+    });
 
-    // Check if the selected answer is correct
-    if (selectedAnswer === correctAnswer) {
-        // Increment correct counter
+    if (selectedIndex === correctAnswerIndex) {
         correctCounter++;
-
-        // Store correct answer in the array
-        correctAnswers.push({ question: currentQuestion.question, answer: correctAnswer });
+        correctAnswers.push({ question: currentQuestion.question, answer: currentQuestion.choices[correctAnswerIndex] });
     } else {
-        // Increment incorrect counter
         incorrectCounter++;
-
-        // Store incorrect answer in the array
-        incorrectAnswers.push({ question: currentQuestion.question, selected: selectedAnswer, correct: correctAnswer });
+        incorrectAnswers.push({ question: currentQuestion.question, selected: currentQuestion.choices[selectedIndex], correct: currentQuestion.choices[correctAnswerIndex] });
     }
 
-    // Move to the next question
-    loadNextQuestion();
+    // Highlight correct and incorrect answers
+    Array.from(answerButtonsElement.children).forEach((button, index) => {
+        if (index === correctAnswerIndex) button.classList.add('correct');
+        if (index === selectedIndex && index !== correctAnswerIndex) button.classList.add('incorrect');
+    });
+
+    setTimeout(loadNextQuestion, 1000); // Brief delay before next question
 }
 
 function loadNextQuestion() {
-    // Additional logic if needed before loading the next question
-
-    // Check if all questions have been answered
-    if (correctCounter + incorrectCounter === questionArray.length) {
+    if (usedQuestions.length === originalQuestions.length) { // Check if all questions have been used
         quizOver();
     } else if (!isQuizFinished && timerCount > 0) {
         loadQuestion();
@@ -122,39 +138,26 @@ function loadNextQuestion() {
 
 function quizOver() {
     clearInterval(timer);
-
-    if (correctCounter > incorrectCounter) {
-        questionElement.textContent = "Congratulations! You completed the quiz!";
-    } else {
-        questionElement.textContent = "Quiz Over. Better luck next time!";
-    }
-
-//    Display or process the correct and incorrect answers stored in the arrays
-   console.log("Correct Answers:", correctAnswers);
-   console.log("Incorrect Answers:", incorrectAnswers);
-
-    //  compare correct and incorrect answers
-    compareAnswers();
+    questionElement.textContent = correctCounter > incorrectCounter 
+        ? "Congratulations! You completed the quiz!" 
+        : "Quiz Over. Better luck next time!";
+    
+    console.log("Correct Answers:", correctAnswers);
+    console.log("Incorrect Answers:", incorrectAnswers);
+    
+    updateScore();
 }
 
-// Function to restart the quiz
 function restartQuiz() {
-    // Reset counters and other necessary variables
     correctCounter = 0;
     incorrectCounter = 0;
-
-    // Reset timer if needed
     clearInterval(timer);
-    timerCount = 15;
-
-    // Update the score display
+    timerCount = 60;  // Reset to initial timer count
+    usedQuestions = [];
     updateScore();
-
-    // Restart the quiz
     startQuiz();
 }
 
-// Update the score display in the "card results" and "correct-incorrect-container"
 function updateScore() {
     const correctCountElement = document.getElementById('correct-count');
     const incorrectCountElement = document.getElementById('incorrect-count');
@@ -168,7 +171,6 @@ function updateScore() {
     correctDisplayElement.textContent = correctCounter;
     incorrectDisplayElement.textContent = incorrectCounter;
 
-    // Display winning or losing message
     if (correctCounter > incorrectCounter) {
         scoreTextElement.textContent = "Congratulations! You're the winner!";
     } else if (correctCounter < incorrectCounter) {
@@ -178,30 +180,12 @@ function updateScore() {
     }
 }
 
-function compareAnswers() {
-    // Display the number of correct and incorrect answers
-    questionElement.textContent = `Correct Answers: ${correctCounter}, Incorrect Answers: ${incorrectCounter}`;
-
-    // // Compare the number of correct and incorrect answers
-    // if (correctCounter > incorrectCounter) {
-    //     questionElement.textContent += "\nCongratulations! You're the winner!";
-    // } else if (correctCounter < incorrectCounter) {
-    //     questionElement.textContent += "\nSorry, you lost. Better luck next time!";
-    // } else {
-    //     questionElement.textContent += "\nIt's a tie! You have an equal number of correct and incorrect answers.";
-    // }
-    updateScore();
-}
-
-
 function loseGame() {
     clearInterval(timer);
     questionElement.textContent = 'You Lose. Quiz Over.';
-    // Additional logic for losing the game
     quizOver();
 }
 
 startButton.addEventListener('click', startQuiz);
 const mulliganButton = document.querySelector('.reset-button');
 mulliganButton.addEventListener('click', restartQuiz);
-
