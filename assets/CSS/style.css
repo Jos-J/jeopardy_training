@@ -84,3 +84,19 @@ header {
   outline: none; /* Remove outline when focused */
   box-shadow: 0 0 10px rgba(9, 40, 52, 0.7); /* Add  dark blue shadow when focused */
 }
+footer {
+  padding: 10px;
+  background-color: #e4f1f6;
+  color: black;
+  text-align: center;
+}
+
+footer a {
+  color: black;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
