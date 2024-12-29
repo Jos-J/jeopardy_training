@@ -3,8 +3,9 @@ var answerButtonsElement = document.getElementById('answer-buttons');
 var timerElement = document.querySelector('.timer-count');
 var startButton = document.getElementById('start-btn');
 var nextButton = document.getElementById('next-btn');
+var restartButton = document.getElementById('restart-btn');
 var timer;
-var timerCount = 60;  // Ensure the initial timer count is 60
+var timerCount = 60;
 var correctCounter = 0;
 var incorrectCounter = 0;
 var isQuizFinished = false;
@@ -14,54 +15,28 @@ var incorrectAnswers = [];
 var usedQuestions = [];
 
 var originalQuestions = [
-    {
-        question: "Inside which HTML element do we put the JavaScript",
-        choices: ['<javascript>', '<script>', '<js>', '<scripting>'],
-        answer: 1
-    },
-    {
-        question: "Which operator is used to assign a value to a variable?",
-        choices: ['*', '-', 'x', '='],
-        answer: 3
-    },
-    {
-        question: 'Is syntax important in HTML, CSS, JavaScript?',
-        choices: ['idk', 'no', 'yes', 'maybe'],
-        answer: 2
-    },
-    {
-        question: "JavaScript is the same as Java?",
-        choices: ['no', 'yes', 'idk', 'whats java'],
-        answer: 0
-    },
-    {
-        question: 'Is JavaScript case-sensitive?',
-        choices: ['no', 'yes', 'all the above', 'none of the above'],
-        answer: 1
-    },
-    {
-        question: 'Where is the correct place to insert the JavaScript script?',
-        choices: ['body', 'header', 'footer', 'idk'],
-        answer: 2
-    },
-    {
-        question: 'Rate my quiz',
-        choices: ['A', 'B', 'C', 'D'],
-        answer: 0
-    }
+    { question: "Inside which HTML element do we put the JavaScript", choices: ['<javascript>', '<script>', '<js>', '<scripting>'], answer: 1 },
+    { question: "Which operator is used to assign a value to a variable?", choices: ['*', '-', 'x', '='], answer: 3 },
+    { question: 'Is syntax important in HTML, CSS, JavaScript?', choices: ['idk', 'no', 'yes', 'maybe'], answer: 2 },
+    { question: "JavaScript is the same as Java?", choices: ['no', 'yes', 'idk', 'whats java'], answer: 0 },
+    { question: 'Is JavaScript case-sensitive?', choices: ['no', 'yes', 'all the above', 'none of the above'], answer: 1 },
+    { question: 'Where is the correct place to insert the JavaScript script?', choices: ['body', 'header', 'footer', 'idk'], answer: 2 },
+    { question: 'Rate my quiz', choices: ['A', 'B', 'C', 'D'], answer: 0 }
 ];
 
 function startQuiz() {
     console.log('Quiz Started');
     isQuizFinished = false;
     timerCount = 60;
-    usedQuestions = [];  // Reset used questions to start fresh
+    usedQuestions = [];
     startTimer();
     loadQuestion();
+    nextButton.style.display = "inline-block"; // Show next button after starting
+    restartButton.style.display = "none"; // Hide play again button during the quiz
 }
 
 function startTimer() {
-    clearInterval(timer);  // Prevent multiple timers from running
+    clearInterval(timer);
     timer = setInterval(function () {
         timerCount--;
         timerElement.textContent = timerCount;
@@ -73,14 +48,13 @@ function startTimer() {
 }
 
 function loadQuestion() {
-    if (usedQuestions.length === originalQuestions.length) { // If all questions are used
+    if (usedQuestions.length === originalQuestions.length) {
         quizOver();
         return;
     }
     
     var randomIndex = Math.floor(Math.random() * originalQuestions.length);
     
-    // Avoid repeating questions
     while (usedQuestions.includes(originalQuestions[randomIndex])) {
         randomIndex = Math.floor(Math.random() * originalQuestions.length);
     }
@@ -88,7 +62,7 @@ function loadQuestion() {
     currentQuestion = originalQuestions[randomIndex];
     usedQuestions.push(currentQuestion);
 
-    var correctAnswerIndex = currentQuestion.answer; // Get the correct answer index directly
+    var correctAnswerIndex = currentQuestion.answer;
 
     questionElement.textContent = currentQuestion.question;
 
@@ -104,7 +78,6 @@ function loadQuestion() {
 }
 
 function selectAnswer(selectedIndex, correctAnswerIndex) {
-    // Reset previous styles
     Array.from(answerButtonsElement.children).forEach(button => {
         button.classList.remove('correct', 'incorrect');
     });
@@ -117,22 +90,19 @@ function selectAnswer(selectedIndex, correctAnswerIndex) {
         incorrectAnswers.push({ question: currentQuestion.question, selected: currentQuestion.choices[selectedIndex], correct: currentQuestion.choices[correctAnswerIndex] });
     }
 
-    // Highlight correct and incorrect answers
     Array.from(answerButtonsElement.children).forEach((button, index) => {
         if (index === correctAnswerIndex) button.classList.add('correct');
         if (index === selectedIndex && index !== correctAnswerIndex) button.classList.add('incorrect');
     });
 
-    setTimeout(loadNextQuestion, 1000); // Brief delay before next question
+    setTimeout(loadNextQuestion, 1000); 
 }
 
 function loadNextQuestion() {
-    if (usedQuestions.length === originalQuestions.length) { // Check if all questions have been used
+    if (usedQuestions.length === originalQuestions.length) {
         quizOver();
-    } else if (!isQuizFinished && timerCount > 0) {
-        loadQuestion();
     } else {
-        quizOver();
+        loadQuestion();
     }
 }
 
@@ -142,17 +112,16 @@ function quizOver() {
         ? "Congratulations! You completed the quiz!" 
         : "Quiz Over. Better luck next time!";
     
-    console.log("Correct Answers:", correctAnswers);
-    console.log("Incorrect Answers:", incorrectAnswers);
-    
     updateScore();
+    nextButton.style.display = "none"; // Hide next button after quiz is over
+    restartButton.style.display = "inline-block"; // Show play again button
 }
 
 function restartQuiz() {
     correctCounter = 0;
     incorrectCounter = 0;
     clearInterval(timer);
-    timerCount = 60;  // Reset to initial timer count
+    timerCount = 60; 
     usedQuestions = [];
     updateScore();
     startQuiz();
@@ -161,23 +130,9 @@ function restartQuiz() {
 function updateScore() {
     const correctCountElement = document.getElementById('correct-count');
     const incorrectCountElement = document.getElementById('incorrect-count');
-    const correctDisplayElement = document.getElementById('correct-display');
-    const incorrectDisplayElement = document.getElementById('incorrect-display');
-    const scoreTextElement = document.getElementById('score-text');
 
     correctCountElement.textContent = correctCounter;
     incorrectCountElement.textContent = incorrectCounter;
-
-    correctDisplayElement.textContent = correctCounter;
-    incorrectDisplayElement.textContent = incorrectCounter;
-
-    if (correctCounter > incorrectCounter) {
-        scoreTextElement.textContent = "Congratulations! You're the winner!";
-    } else if (correctCounter < incorrectCounter) {
-        scoreTextElement.textContent = "Sorry, you lost. Better luck next time!";
-    } else {
-        scoreTextElement.textContent = "It's a tie! You have an equal number of correct and incorrect answers.";
-    }
 }
 
 function loseGame() {
@@ -187,5 +142,6 @@ function loseGame() {
 }
 
 startButton.addEventListener('click', startQuiz);
+nextButton.addEventListener('click', loadNextQuestion);
 const mulliganButton = document.querySelector('.reset-button');
 mulliganButton.addEventListener('click', restartQuiz);

@@ -22,10 +22,7 @@
       <div class="card word-guess">
         <div class="question">What is JavaScript used for?</div>
         <div id="answer-buttons" class="btn-grid">
-          <button class="btn">Answer 1</button>
-          <button class="btn">Answer 2</button>
-          <button class="btn">Answer 3</button>
-          <button class="btn">Answer 4</button>
+          <!-- Answer buttons will be dynamically added here -->
         </div>
       </div>
     </section>
@@ -50,15 +47,26 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <script src="./assets/Scripts/script.js" defer></script>
+    <!-- Next Question button -->
+    <section>
+      <button id="next-btn" class="btn">Next Question</button>
+    </section>
+
+    <!-- Play Again button after quiz ends -->
+    <section>
+      <button id="restart-btn" class="btn" style="display: none;">Play Again</button>
+    </section>
+
+  </main>
 
   <footer>
     <p>&copy; 2024 Joshua James Porfilio. All rights reserved.</p>
     <a href="https://www.linkedin.com/in/joshuajames">LinkedIn</a> |
     <a href="https://github.com/Jos-J">GitHub</a>
   </footer>
+
+  <script src="./assets/Scripts/script.js" defer></script>
 </body>
 
 </html>
